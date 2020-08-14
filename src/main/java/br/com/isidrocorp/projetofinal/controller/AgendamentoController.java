@@ -85,7 +85,6 @@ public class AgendamentoController {
 	@GetMapping("/agendamentos/filtrarporagenciaedata")
 	public ArrayList<Agendamento> filtrarPorAgenciaEData(@RequestParam(name="agencia") int agencia, @RequestParam(name="dataAgendamento") String dataAgendamento) {
 		System.out.println("agencia = " + agencia + " data = " + dataAgendamento);
-		//DateTimeFormatter formatter = DateTimeFormatter.ofPattern("d/MM/yyyy");
 		LocalDate localDate = LocalDate.parse(dataAgendamento);
 		Agencia ag2 = new Agencia();
 		ag2.setId(agencia);
@@ -95,8 +94,7 @@ public class AgendamentoController {
 	@GetMapping("/agendamentos/filtrarporagenciaedataecliente")
 	public ArrayList<Agendamento> filtrarPorAgenciaEDataECliente(@RequestParam(name="agencia") int agencia, @RequestParam(name="dataAgendamento") String dataAgendamento, @RequestParam(name="nomecli") String nome) {
 		System.out.println("agencia = " + agencia + " data = " + dataAgendamento);
-		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("d/MM/yyyy");
-		LocalDate localDate = LocalDate.parse(dataAgendamento, formatter);
+		LocalDate localDate = LocalDate.parse(dataAgendamento);
 		Agencia ag2 = new Agencia();
 		ag2.setId(agencia);
 		return dao.findAllByAgenciaAndDataAgendamentoAndNomeClienteContaining(ag2, localDate, nome);
