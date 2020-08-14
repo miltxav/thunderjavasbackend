@@ -32,7 +32,7 @@ public class Agendamento {
 	private String celularCliente;
 	
 	@Column(name="data_agendamento")
-	@JsonFormat(pattern="dd/MM/yyyy")
+	@JsonFormat(pattern="yyy-MM-dd")
 	private LocalDate   dataAgendamento;
 	
 	@Column(name="hora_agendamento")
